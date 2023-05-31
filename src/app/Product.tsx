@@ -42,8 +42,7 @@ const handleQty = (opr:string)=>{
 
 const handleSubmit = async ()=>{
   const res = await fetch('/api/cart',{
-    method: 'POST',
-    
+    method: 'POST',    
     body: JSON.stringify({
         product_id: product._id,
         price: product.price,
