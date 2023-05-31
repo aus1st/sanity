@@ -1,12 +1,10 @@
 import Image from 'next/image'
+
 import {client} from '../../sanity/lib/client'
-
-import imageUrlBuilder from '@sanity/image-url'
 import { Image as IImage } from 'sanity';
+import Product from './Product';
 
-const builder = imageUrlBuilder(client);
-
- interface IProduct  {
+interface IProduct  {
   title: string,
   _id: string
   description: string,
@@ -17,9 +15,7 @@ const builder = imageUrlBuilder(client);
   }
 }
 
-const urlFor = (source:any)=>{
-  return builder.image(source);
-}
+
 
 const getData = async ()=>{
   const res = await client.fetch(`*[_type=='product']{
@@ -41,10 +37,7 @@ const data: IProduct[] = await getData()
       data.map((item)=>(
         <div key={item._id} className='max-w-md'>
        
-        <Image src={urlFor(item.image).url()} width={200} height={190} alt={item.title}/>
-        <h1 >{item.title}</h1>
-        <h3>{item.price}</h3>
-        <button className='bg-blue-600 text-white rounded border py-2  px-5'>Add to Cart</button>
+        <Product product={item}/>
         </div>
       ))
     }
