@@ -62,21 +62,21 @@ const handleBuy = ()=>{
   console.log(item)
 }
 
-const handleSubmit = async ()=>{
+  const handleSubmit = async ()=>{
 
-  //handleBuy();
-  const res = await fetch('/api/cart',{
-    method: 'POST',    
-    body: JSON.stringify({
-        product_id: product._id,
-        price: product.price,
-        quantity: quantity
-    })
-})
+    //handleBuy();
+    const res = await fetch('/api/cart',{
+      method: 'POST',    
+      body: JSON.stringify({
+          product_id: product._id,
+          price: product.price*100,
+          quantity: quantity
+      })
+  })
 
-return res;
+  return res;
 
-}
+  }
 
 
 

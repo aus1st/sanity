@@ -30,6 +30,7 @@ export async function POST(request: NextRequest) {
             //images: [item.image],
             product_data: {
                 name: item.title,
+                
             },
             unit_amount: Number(item.amount),
             //description: item.title,
