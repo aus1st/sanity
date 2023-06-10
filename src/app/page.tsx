@@ -3,6 +3,8 @@ import Image from 'next/image'
 import {client} from '../../sanity/lib/client'
 import { Image as IImage } from 'sanity';
 import Product from './Product';
+import FullScreenNav from './components/FullScreenNav'
+import Nav from './components/Nav';
 
 interface IProduct  {
   title: string,
@@ -32,7 +34,13 @@ export default async function Home() {
 const data: IProduct[] = await getData()
 //console.log(data);
   return (
-    <div className='grid grid-cols-[repeat(3,auto)] gap-x-3 mt-5 justify-center gap-y-3'>
+<> 
+
+{/* <Nav/> */}
+<FullScreenNav/>
+
+<div className='grid grid-cols-[repeat(3,auto)] gap-x-3 mt-5 justify-center gap-y-3'>
+
     {
       data.map((item)=>(
         <div key={item._id} className='max-w-md'>
@@ -42,5 +50,6 @@ const data: IProduct[] = await getData()
       ))
     }
     </div>
+    </>
   )
 } 
